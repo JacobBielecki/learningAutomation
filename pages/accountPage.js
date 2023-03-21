@@ -1,9 +1,11 @@
 const COMMON_TIMEOUT = global.__TIMEOUT__;
+const {getText} = require('../utils/utils');
 
 const SELECTORS = {
     NAVIGATION_OPTIONS: {
         ADRESS_BOOK: "//a[text()='Address Book']",
-        ADD_NEW_ADRESS: "//button[@role='add-address']"
+        ADD_NEW_ADRESS: "//button[@role='add-address']",
+        NEWSLETTER_SUBSCRIPTION: "//a[text()='Newsletter Subscriptions']"
     },
     ADDRESS_DETAILS: {
         FIRSTNAME_INPUT: "//input[@id='firstname']",
@@ -14,10 +16,12 @@ const SELECTORS = {
         STATEPROVINCE_DROPDOWN: "//select[@name='region_id']",
         POSTALCODE_INPUT: "//input[@name='postcode']",
         COUNTRY_DROPDOWN: "//select[@name='country_id']",
-        SAVEADRESS_BUTTON: "//button[@class='action save primary']"
+        SAVE_ADDRESS_BUTTON: "//button[@class='action save primary']"
+    },
+    ACCOUNT_DETAILS: {
+        NEWSLETTER_DESCRIPTION: "//div[contains(@class, 'box-newsletter')]//p"
     }
 };
-
 const clickNavigationOption = async (page, optionName) => {
     if (optionName === "Address Book") {
         const optionElement = await page.waitForXPath(SELECTORS.NAVIGATION_OPTIONS.ADRESS_BOOK, {
@@ -92,13 +96,26 @@ const chooseProvince = async (page, region_Id) => {
 
 const saveAddress = async (page, optionName) => {
     if (optionName === "Save Address") {
-        const optionElement = await page.waitForXPath(SELECTORS.ADDRESS_DETAILS.SAVEADRESS_BUTTON,  {
+        const optionElement = await page.waitForXPath(SELECTORS.ADDRESS_DETAILS.SAVE_ADDRESS_BUTTON,  {
             visible: true,
             timeout: COMMON_TIMEOUT
     });
         await optionElement.click();
     }
 };
+
+const clickNewsletterSubscriptions = async (page) => {
+    const optionElement = await page.waitForXPath(SELECTORS.NAVIGATION_OPTIONS.NEWSLETTER_SUBSCRIPTION, {
+        visible: true,
+        timeout: COMMON_TIMEOUT
+    });
+    await optionElement.click();
+};
+
+const getNewsletterDescriptionText = async (page) => {
+    const newsletterDescription = await page.waitForXPath(SELECTORS.ACCOUNT_DETAILS.NEWSLETTER_DESCRIPTION, {visible: true, timeout: COMMON_TIMEOUT});
+    return await getText(newsletterDescription);
+}
 
 module.exports = {
     clickNavigationOption,
@@ -111,5 +128,7 @@ module.exports = {
     setPostalCode,
     chooseCountry,
     chooseProvince,
-    saveAddress
+    saveAddress,
+    clickNewsletterSubscriptions,
+    getNewsletterDescriptionText
 };
