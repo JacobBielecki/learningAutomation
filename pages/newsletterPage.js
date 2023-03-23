@@ -1,5 +1,4 @@
 const COMMON_TIMEOUT = global.__TIMEOUT__;
-
 const SELECTORS = {
     SUBSCRIPTION_BUTTON: "//input[@type = 'checkbox']",
     SAVE_BUTTON: "//button[@title='Save']"
@@ -19,9 +18,7 @@ const clickSaveButton = async (page) => {
         timeout: COMMON_TIMEOUT
     });
     await optionElement.click();
-
-
-}
+};
 
 module.exports = {
     clickGeneralSubscription,
