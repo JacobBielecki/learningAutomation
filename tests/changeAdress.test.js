@@ -1,8 +1,9 @@
 const loginPage = require('../pages/loginPage');
 const accountPage = require('../pages/accountPage');
-const {faker} = require('@faker-js/faker');
+const addressBookPage = require('../pages/addressBookPage');
+const {getText} = require("../utils/utils");
 
-describe('Home page', () => {
+describe('Address Book', () => {
     /**
      * Represents page object.
      */
@@ -13,18 +14,29 @@ describe('Home page', () => {
         await loginPage.login(page);
     });
 
-    it('Redirect to home page.', async () => {
+    it('Adds new address to Address Book and deletes it.', async () => {
         await accountPage.clickNavigationOption(page, "Address Book");
-        await accountPage.clickAddNewAddress(page);
-        await accountPage.setFirstNameDetail(page, "Jakub");
-        await accountPage.setLastNameDetail(page, "Bielecki");
-        await accountPage.setPhoneNumberDetail(page, "+48231234531");
-        await accountPage.setStreetAddressDetail(page, `Paczkowa ${Math.ceil(Math.random() * 100)}`);
-        await accountPage.setCityDetail(page, "Kraków");
-        await accountPage.chooseCountry(page, "PL");
-        await accountPage.setPostalCode(page, "37-123");
-        await accountPage.chooseProvince(page, "694");
-        await accountPage.saveAddress(page, "Save Address");
-        //TODO add assertions to all set data.
+        await addressBookPage.clickAddNewAddress(page);
+
+        const firstName = await addressBookPage.setFirstNameDetail(page);
+        const lastName = await addressBookPage.setLastNameDetail(page);
+        const phoneNumber = await addressBookPage.setPhoneNumberDetail(page);
+        const streetAddress = await addressBookPage.setStreetAddressDetail(page, `Paczkowa ${Math.ceil(Math.random() * 100)}`);
+        const city = await addressBookPage.setCityDetail(page);
+        const country = await addressBookPage.chooseCountry(page, 'PL');
+        const postalCode = await addressBookPage.setPostalCode(page);
+        const province = await addressBookPage.chooseProvince(page, 'podkarpackie');
+        await addressBookPage.saveAddress(page);
+
+        expect(await getText(await addressBookPage.getFirstName(page, 1))).toBe(firstName);
+        expect(await getText(await addressBookPage.getLastName(page, 1))).toBe(lastName);
+        expect(await getText(await addressBookPage.getPhoneNumber(page, 1))).toBe(phoneNumber);
+        expect(await getText(await addressBookPage.getStreetAddress(page, 1))).toBe(streetAddress);
+        expect(await getText(await addressBookPage.getCity(page, 1))).toBe(city);
+        expect(await getText(await addressBookPage.getCountry(page, 1))).toBe(country);
+        expect(await getText(await addressBookPage.getPostalCode(page, 1))).toBe(postalCode);
+        expect(await getText(await addressBookPage.getProvince(page, 1))).toBe(province);
+
+        await addressBookPage.deleteAddress(page);
     });
 });
