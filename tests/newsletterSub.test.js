@@ -15,13 +15,13 @@ describe('Newsletter', () => {
     });
 
     it('Subscribe and unsubscribe to newsletter', async () => {
-    await accountPage.clickNewsletterSubscriptions(page);
+    await accountPage.clickNavigationOption(page, "Newsletter Subscriptions");
     await newsletterPage.clickGeneralSubscription(page);
     await newsletterPage.clickSaveButton(page);
 
     expect(await accountPage.getNewsletterDescriptionText(page)).toContain('You are subscribed to "General Subscription".');
 
-    await accountPage.clickNewsletterSubscriptions(page);
+    await accountPage.clickNavigationOption(page, "Newsletter Subscriptions");
     await newsletterPage.clickGeneralSubscription(page);
     await newsletterPage.clickSaveButton(page);
 

@@ -1,6 +1,5 @@
 const COMMON_TIMEOUT = global.__TIMEOUT__;
 const {getText} = require('../utils/utils');
-const {faker} = require('@faker-js/faker');
 
 const SELECTORS = {
     NAVIGATION_OPTIONS: {

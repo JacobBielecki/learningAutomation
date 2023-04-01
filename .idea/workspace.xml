@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bab94c6b-a137-46fa-b69e-9b1dd46eeead" name="Changes" comment="LA-001 Added JSDOC to functions, added assertions.">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/clover.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/coverage-final.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/block-navigation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/prettify.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/prettify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/sort-arrow-sprite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/sorter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/accountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/accountPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/newsletterSub.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/newsletterSub.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +29,19 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="0a8bdbe7-27d6-4e78-9438-2ada30f42afc" />
+        <option name="url" value="https://github.com/JacobBielecki/learningAutomation.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,7 +74,7 @@
       <recent name="D:\learningPuppeteerAutomation" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.changeAdress.test.js">
+  <component name="RunManager" selected="Jest.newsletterSub.test.js">
     <configuration name="Home page.Redirect to Newsletter Subscriptions" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -134,10 +138,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.newsletterSub.test.js" />
         <item itemvalue="Jest.changeAdress.test.js" />
         <item itemvalue="Jest.login.test.js" />
         <item itemvalue="Jest.homePage.test.js" />
-        <item itemvalue="Jest.newsletterSub.test.js" />
         <item itemvalue="Jest.Home page.Redirect to Newsletter Subscriptions" />
       </list>
     </recent_temporary>
@@ -177,7 +181,8 @@
       <workItem from="1679964936109" duration="1720000" />
       <workItem from="1680010602160" duration="14286000" />
       <workItem from="1680184495188" duration="1222000" />
-      <workItem from="1680290189672" duration="395000" />
+      <workItem from="1680290189672" duration="1822000" />
+      <workItem from="1680368240837" duration="727000" />
     </task>
     <task id="LOCAL-00001" summary="LA-001 Added review fixes">
       <created>1679610175845</created>
@@ -200,7 +205,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680290228974</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="LA-001 Added JSDOC to functions, added assertions.">
+      <created>1680290630379</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680290630379</updated>
+    </task>
+    <task id="LOCAL-00005" summary="LA-001 Added JSDOC to functions, added assertions.">
+      <created>1680290744673</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680290744673</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
