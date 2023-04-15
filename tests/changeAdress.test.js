@@ -28,15 +28,17 @@ describe('Address Book', () => {
         const province = await addressBookPage.chooseProvince(page, 'podkarpackie');
         await addressBookPage.saveAddress(page);
 
-        expect(await getText(await addressBookPage.getFirstName(page, 1))).toBe(firstName);
-        expect(await getText(await addressBookPage.getLastName(page, 1))).toBe(lastName);
-        expect(await getText(await addressBookPage.getPhoneNumber(page, 1))).toBe(phoneNumber);
-        expect(await getText(await addressBookPage.getStreetAddress(page, 1))).toBe(streetAddress);
-        expect(await getText(await addressBookPage.getCity(page, 1))).toBe(city);
-        expect(await getText(await addressBookPage.getCountry(page, 1))).toBe(country);
-        expect(await getText(await addressBookPage.getPostalCode(page, 1))).toBe(postalCode);
-        expect(await getText(await addressBookPage.getProvince(page, 1))).toBe(province);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "First Name"))).toBe(firstName);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "Last Name"))).toBe(lastName);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "Phone"))).toBe(phoneNumber);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "Street Address"))).toBe(streetAddress);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "City"))).toBe(city);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "Country"))).toBe(country);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "Zip/Postal Code"))).toBe(postalCode);
+        expect(await getText(await addressBookPage.getAddressDetail(page, 1, "State"))).toBe(province);
 
         await addressBookPage.deleteAddress(page);
+
+        expect(await addressBookPage.getConfirmationMessage(page)).toContain("You deleted the address.");
     });
 });

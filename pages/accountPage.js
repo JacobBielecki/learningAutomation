@@ -4,7 +4,8 @@ const {getText} = require('../utils/utils');
 const SELECTORS = {
     NAVIGATION_OPTIONS: {
         ADRESS_BOOK: "//a[text()='Address Book']",
-        NEWSLETTER_SUBSCRIPTION: "//a[text()='Newsletter Subscriptions']"
+        NEWSLETTER_SUBSCRIPTION: "//a[text()='Newsletter Subscriptions']",
+        ACCOUNT_INFORMATION: "//li[@class='nav item current']"
     },
     ADDRESS_DETAILS: {
         FIRSTNAME_INPUT: "//input[@id='firstname']",
@@ -26,7 +27,6 @@ const SELECTORS = {
  * Clicks option from navigation menu.
  * @param page Represents page object of currently handled tab.
  * @param optionName Name of an element from navigation menu.
- * @returns {Promise<void>} Clicks and navigates us to chosen element.
  */
 const clickNavigationOption = async(page, optionName) => {
     let optionElement;
@@ -44,6 +44,12 @@ const clickNavigationOption = async(page, optionName) => {
                 timeout: COMMON_TIMEOUT
             });
             break;
+        case "Account Information":
+            optionElement = await page.waitForXPath(SELECTORS.NAVIGATION_OPTIONS.ACCOUNT_INFORMATION, {
+                visible: true,
+                timeout: COMMON_TIMEOUT
+            });
+            break;
     }
 
     await optionElement.click();
@@ -56,7 +62,10 @@ const clickNavigationOption = async(page, optionName) => {
  * @returns {Promise<*>} Returns the received text.
  */
 const getNewsletterDescriptionText = async (page) => {
-    const newsletterDescription = await page.waitForXPath(SELECTORS.ACCOUNT_DETAILS.NEWSLETTER_DESCRIPTION, {visible: true, timeout: COMMON_TIMEOUT});
+    const newsletterDescription = await page.waitForXPath(SELECTORS.ACCOUNT_DETAILS.NEWSLETTER_DESCRIPTION, {
+        visible: true,
+        timeout: COMMON_TIMEOUT
+    });
 
     return await getText(newsletterDescription);
 };
