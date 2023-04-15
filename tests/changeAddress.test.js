@@ -39,8 +39,6 @@ describe('Address Book', () => {
 
         await addressBookPage.deleteAddress(page);
 
-        console.log(1)
-
         expect(await addressBookPage.getConfirmationMessage(page)).toContain("You deleted the address.");
     });
 });
