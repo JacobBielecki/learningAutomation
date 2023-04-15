@@ -1,0 +1,7 @@
+### Git ignored files
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
