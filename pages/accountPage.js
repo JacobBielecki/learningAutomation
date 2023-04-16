@@ -5,7 +5,7 @@ const SELECTORS = {
     NAVIGATION_OPTIONS: {
         ADRESS_BOOK: "//a[text()='Address Book']",
         NEWSLETTER_SUBSCRIPTION: "//a[text()='Newsletter Subscriptions']",
-        ACCOUNT_INFORMATION: "//li[@class='nav item current']"
+        ACCOUNT_INFORMATION: "//a[text()='Account Information']"
     },
     ADDRESS_DETAILS: {
         FIRSTNAME_INPUT: "//input[@id='firstname']",
@@ -19,8 +19,10 @@ const SELECTORS = {
         SAVE_ADDRESS_BUTTON: "//button[@class='action save primary']"
     },
     ACCOUNT_DETAILS: {
-        NEWSLETTER_DESCRIPTION: "//div[contains(@class, 'box-newsletter')]//p"
-    }
+        NEWSLETTER_DESCRIPTION: "//div[contains(@class, 'box-newsletter')]//p",
+        ACCOUNT_INFORMATION_DESCRIPTION: "//div[text()='You saved the account information.']"
+    },
+    ACCOUNT_INFORMATION: "//div[@class='box box-information']//div//p"
 };
 
 /**
@@ -70,7 +72,27 @@ const getNewsletterDescriptionText = async (page) => {
     return await getText(newsletterDescription);
 };
 
+const getAccountInformationText = async (page) => {
+    const confirmationMessage = await page.waitForXPath(SELECTORS.ACCOUNT_DETAILS.ACCOUNT_INFORMATION_DESCRIPTION, {
+        visible:true,
+        timeout:COMMON_TIMEOUT
+    });
+
+    return await getText(confirmationMessage)
+};
+
+const getContactInformation = async (page) => {
+    const contactInformation = await page.waitForXPath(SELECTORS.ACCOUNT_INFORMATION, {
+        visible:true,
+        timeout:COMMON_TIMEOUT
+    });
+
+    return contactInformation
+};
+
 module.exports = {
     clickNavigationOption,
-    getNewsletterDescriptionText
+    getNewsletterDescriptionText,
+    getAccountInformationText,
+    getContactInformation
 };
