@@ -28,6 +28,9 @@
 ### Jest ###
 [**Jest**](https://jestjs.io/docs/puppeteer) Testing framework
 
+To resolve underlined JEST keywords follow this steps:
+File -> Settings -> Languages & Frameworks -> JavaScript -> Libraries -> Download, and select 'jest' from the list of available options.
+
 ### Naming conventions ###
 [**Hungarian notation**](https://en.wikipedia.org/wiki/Hungarian_notation) Naming convention for variables
 ### Git ###
