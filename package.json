@@ -22,5 +22,8 @@
     "npm": "^8.12.1",
     "puppeteer": "^19.4.1",
     "querystring": "0.2.0"
+  },
+  "devDependencies": {
+    "faker": "^5.5.3"
   }
 }

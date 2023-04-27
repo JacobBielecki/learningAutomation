@@ -1,5 +1,6 @@
 const {faker} = require("@faker-js/faker");
 const COMMON_TIMEOUT = global.__TIMEOUT__;
+
 const SELECTORS = {
     FIRST_NAME_INPUT: "//input[@id='firstname']",
     LAST_NAME_INPUT: "//input[@id='lastname']",

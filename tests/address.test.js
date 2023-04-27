@@ -41,4 +41,21 @@ describe('Address Book', () => {
 
         expect(await addressBookPage.getConfirmationMessage(page)).toContain("You deleted the address.");
     });
+
+    it('Edits Billing and Shipping Address', async () => {
+        //await accountPage.clickNavigationOption(page, "Address Book");
+        await addressBookPage.clickEditBillingAddress(page);
+
+        const firstName = await addressBookPage.setFirstNameDetail(page);
+        const lastName = await addressBookPage.setLastNameDetail(page);
+        const phoneNumber = await addressBookPage.setPhoneNumberDetail(page);
+        const streetAddress = await addressBookPage.setStreetAddressDetail(page, `Paczkowa ${Math.ceil(Math.random() * 100)}`);
+        const city = await addressBookPage.setCityDetail(page);
+        const country = await addressBookPage.chooseCountry(page, 'PL');
+        const postalCode = await addressBookPage.setPostalCode(page);
+        const province = await addressBookPage.chooseProvince(page, 'podkarpackie');
+        await addressBookPage.saveAddress(page);
+
+        expect(await addressBookPage.getAddressInformation(page)).toContain(firstName, lastName, phoneNumber, streetAddress, city, country, postalCode, province);
+    });
 });

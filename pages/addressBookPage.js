@@ -10,6 +10,7 @@ const SELECTORS = {
     DELETE_BUTTON: "//a[@class='action delete']",
     APPROVE_BUTTON: "//button[@class='action-primary action-accept']",
     DELETE_ADDRESS_CONFIRMATION_MESSAGE: "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']",
+    CHANGE_MAIN_ADDRESS: "//div[@class='box box-address-billing']//a[@class='action edit']",
     ADDRESS_DETAILS: {
         FIRSTNAME_INPUT: "//input[@id='firstname']",
         LASTNAME_INPUT: "//input[@id='lastname']",
@@ -23,7 +24,8 @@ const SELECTORS = {
         PROVINCE_CHECK_OPTION: "//option[@value='1']",
         COUNTRY_CHECK_OPTION: "//option[@value='US']",
         STATEPROVINCE_INPUT: "//input[@id='region']",
-        PODKARPACKIE_ID: "//option[text()='podkarpackie']"
+        PODKARPACKIE_ID: "//option[text()='podkarpackie']",
+        BILLING_ADDRESS: "//div[@class='box box-address-billing']//div[@class='box-content']",
     },
     ADDITIONAL_ADDRESS_ENTRIES: "//tr[%n]//td[@data-th = '%s']",
 };
@@ -85,7 +87,7 @@ const setPhoneNumberDetail = async (page, phoneNumber = faker.phone.number()) =>
         visible: true,
         timeout: COMMON_TIMEOUT
     });
-    await phoneNumberInput.click();
+    await phoneNumberInput.click({clickCount: 3});
     await phoneNumberInput.type(phoneNumber);
 
     return phoneNumber;
@@ -102,7 +104,7 @@ const setStreetAddressDetail = async (page, addressDetail = faker.address.street
         visible: true,
         timeout: COMMON_TIMEOUT
     });
-    await streetAdressInput.click();
+    await streetAdressInput.click({clickCount: 3});
     await streetAdressInput.type(addressDetail);
 
     return addressDetail;
@@ -119,7 +121,7 @@ const setCityDetail = async (page, cityDetail = faker.address.city()) => {
         visible: true,
         timeout: COMMON_TIMEOUT
     });
-    await cityInput.click();
+    await cityInput.click({clickCount: 3});
     await cityInput.type(cityDetail);
 
     return cityDetail;
@@ -136,7 +138,7 @@ const setPostalCode = async(page, postalCode = faker.address.zipCode()) => {
         visible: true,
         timeout: COMMON_TIMEOUT
     });
-    await setPostalCode.click();
+    await setPostalCode.click({clickCount: 3});
     await setPostalCode.type(postalCode);
 
     return postalCode;
@@ -245,6 +247,31 @@ const getConfirmationMessage = async (page) => {
 
 };
 
+/**
+ * Clicks edit address to change main address.
+ * @param page Represents page object of currently handled tab.
+ */
+const clickEditBillingAddress = async (page) => {
+    const editBillingAddress = await page.waitForXPath(SELECTORS.CHANGE_MAIN_ADDRESS, {
+        visible:true,
+        timeout:COMMON_TIMEOUT
+    });
+
+    await editBillingAddress.click()
+};
+
+/**
+ * Gets information about what is inside Address Information
+ * @param page Represents page object of currently handled tab.
+ * @returns Address Information text.
+ */
+const getAddressInformation = async (page) => {
+    const addressInformation = await page.waitForXPath(SELECTORS.ADDRESS_DETAILS.BILLING_ADDRESS, {
+        visible:true,
+        timeout: COMMON_TIMEOUT
+    });
+    return await getText(addressInformation);
+};
 module.exports = {
     clickAddNewAddress,
     setFirstNameDetail,
@@ -258,5 +285,7 @@ module.exports = {
     saveAddress,
     deleteAddress,
     getConfirmationMessage,
-    getAddressDetail
+    getAddressDetail,
+    clickEditBillingAddress,
+    getAddressInformation
 };
