@@ -61,7 +61,7 @@ const clickNavigationOption = async(page, optionName) => {
 /**
  * Gets received text from updating Newsletter.
  * @param page Represents page object of currently handled tab.
- * @returns {Promise<*>} Returns the received text.
+ * @returns Returns the received text.
  */
 const getNewsletterDescriptionText = async (page) => {
     const newsletterDescription = await page.waitForXPath(SELECTORS.ACCOUNT_DETAILS.NEWSLETTER_DESCRIPTION, {
@@ -72,6 +72,11 @@ const getNewsletterDescriptionText = async (page) => {
     return await getText(newsletterDescription);
 };
 
+/**
+ * Gets received text from saving Account Information.
+ * @param page Represents page object of currently handled tab.
+ * @returns Returns the received text.
+ */
 const getAccountInformationText = async (page) => {
     const confirmationMessage = await page.waitForXPath(SELECTORS.ACCOUNT_DETAILS.ACCOUNT_INFORMATION_DESCRIPTION, {
         visible:true,
@@ -81,13 +86,16 @@ const getAccountInformationText = async (page) => {
     return await getText(confirmationMessage)
 };
 
+/**
+ * Gets information about what is inside Contact Information.
+ * @param page Represents page object of currently handled tab.
+ * @returns Element that contains Name, Last Name and Email.
+ */
 const getContactInformation = async (page) => {
-    const contactInformation = await page.waitForXPath(SELECTORS.ACCOUNT_INFORMATION, {
+    return await page.waitForXPath(SELECTORS.ACCOUNT_INFORMATION, {
         visible:true,
         timeout:COMMON_TIMEOUT
     });
-
-    return contactInformation
 };
 
 module.exports = {
