@@ -82,12 +82,10 @@ const getAccountInformationText = async (page) => {
 };
 
 const getContactInformation = async (page) => {
-    const contactInformation = await page.waitForXPath(SELECTORS.ACCOUNT_INFORMATION, {
+    return await page.waitForXPath(SELECTORS.ACCOUNT_INFORMATION, {
         visible:true,
         timeout:COMMON_TIMEOUT
     });
-
-    return contactInformation
 };
 
 module.exports = {
