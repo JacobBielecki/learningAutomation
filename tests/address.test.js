@@ -43,7 +43,7 @@ describe('Address Book', () => {
     });
 
     it('Edits Billing and Shipping Address', async () => {
-        //await accountPage.clickNavigationOption(page, "Address Book");
+        await accountPage.clickNavigationOption(page, "Address Book");
         await addressBookPage.clickEditBillingAddress(page);
 
         const firstName = await addressBookPage.setFirstNameDetail(page);
