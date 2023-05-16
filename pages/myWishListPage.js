@@ -6,6 +6,12 @@ const SELECTORS = {
     DELETE_BUTTON: "//a[@title='Remove This Item']",
 
 };
+
+/**
+ * Gets received text from adding item to Wish List.
+ * @param page Represents page object of currently handled tab.
+ * @returns Text from adding or deleting item from Wish List.
+ */
 const wishListConfirmationMessage = async (page) => {
     const wishListDescription = await page.waitForXPath(SELECTORS.WISH_LIST_DESCRIPTION, {
         visible: true,
@@ -15,6 +21,10 @@ const wishListConfirmationMessage = async (page) => {
     return await getText(wishListDescription)
 };
 
+/**
+ * Deletes product from Wish List.
+ * @param page Represents page object of currently handled tab.
+ */
 const deleteProduct = async (page) => {
     const button = await page.waitForXPath(SELECTORS.DELETE_BUTTON, {
         visible: true,

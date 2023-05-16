@@ -14,7 +14,7 @@ describe('Wish list', () => {
         await loginPage.login(page);
     });
 
-    it('Adds chosen item to wishlist', async () => {
+    it('Adds and removes item from Wish List', async () => {
         await homePage.clickHomePage(page);
         await homePage.clickMenPage(page);
         await menPage.clickTeesButton(page);

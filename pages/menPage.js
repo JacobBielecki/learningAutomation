@@ -6,6 +6,10 @@ const SELECTORS = {
     ADD_TO_WISHLIST: "//a[@data-action='add-to-wishlist']"
 };
 
+/**
+ * It navigates us to tees page.
+ * @param page Represents page object of currently handled tab.
+ */
 const clickTeesButton = async (page) => {
     const button = await page.waitForXPath(SELECTORS.TEES_BUTTON, {
         visible: true,
@@ -16,6 +20,10 @@ const clickTeesButton = async (page) => {
     await page.waitForNavigation();
 };
 
+/**
+ * Click chosen tees.
+ * @param page Represents page object of currently handled tab.
+ */
 const clickChosenTees = async (page) => {
     const element = await page.waitForXPath(SELECTORS.CHOSEN_TEES, {
         visible: true,
@@ -26,6 +34,10 @@ const clickChosenTees = async (page) => {
     await page.waitForNavigation();
 };
 
+/**
+ * Adds chosen item to wish list.
+ * @param page Represents page object of currently handled tab.
+ */
 const addToWishList = async (page) => {
     const button = await page.waitForXPath(SELECTORS.ADD_TO_WISHLIST, {
         visible: true,
